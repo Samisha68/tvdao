@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db/connect';
-import { Channel, Vote } from '@/lib/db/models';
+import { Channel } from '@/lib/db/models';
 import mongoose from 'mongoose';
 
-interface Params {
-    params: { id: string }
-}
+// Removed RouteContext interface for this test
 
 // GET a specific channel by ID
-export async function GET(request: NextRequest, { params }: Params) {
-  const { id } = params;
+export async function GET(request: NextRequest, context: any) {
+  const { id } = context.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return new NextResponse("Invalid channel ID", { status: 400 });
@@ -33,8 +31,8 @@ export async function GET(request: NextRequest, { params }: Params) {
 }
 
 // PATCH a channel (e.g., update title, description)
-export async function PATCH(request: NextRequest, { params }: Params) {
-    const { id } = params;
+export async function PATCH(request: NextRequest, context: any) {
+    const { id } = context.params;
     
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return new NextResponse("Invalid channel ID", { status: 400 });
