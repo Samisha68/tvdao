@@ -3,14 +3,11 @@ import dbConnect from '@/lib/db/connect';
 import { Vote } from '@/lib/db/models';
 import mongoose from 'mongoose';
 
-interface RouteContextParams {
-  userId: string;
-  channelId: string;
-}
-
-export async function GET(request: NextRequest, context: { params: RouteContextParams }) {
-  const resolvedParams = await context.params;
-  const { userId, channelId } = resolvedParams;
+export async function GET(
+  request: NextRequest,
+  { params }: any
+) {
+  const { userId, channelId } = params;
 
   if (!userId || !channelId) {
     return new NextResponse("Missing userId or channelId", { status: 400 });

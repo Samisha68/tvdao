@@ -25,6 +25,7 @@ export async function POST(request: NextRequest) {
       title,
       description,
       broadcaster_price,
+      category, // Added category field
     } = body;
 
     if (!creator || !title || !description || broadcaster_price === undefined) {
@@ -42,6 +43,7 @@ export async function POST(request: NextRequest) {
       is_voting_active: true,
       total_upvotes: 0,
       total_downvotes: 0,
+      category: category || 'New', // Use provided category or default to 'New'
     });
 
     return NextResponse.json(newChannel, { status: 201 });

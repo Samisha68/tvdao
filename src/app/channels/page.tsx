@@ -5,19 +5,14 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-hot-toast";
+import { Logo } from "@/components/Logo";
+import { ChannelCategory } from "../channels/types";
 
 import * as anchor from "@coral-xyz/anchor";
 import { Program, AnchorProvider } from "@coral-xyz/anchor";
 import { PublicKey, SystemProgram, Connection, ParsedAccountData } from "@solana/web3.js";
 import { BN } from "@coral-xyz/anchor";
 import idl from "../../idl/tvdao.json"; // Corrected relative path
-
-// Import or define ChannelCategory enum, matching dashboard and smart contract
-export enum ChannelCategory {
-  New = "New",
-  Popular = "Popular",
-  TrendingNow = "TrendingNow",
-}
 
 // Update Channel interface
 interface Channel {
@@ -718,20 +713,16 @@ export default function Channels() {
   // --- Main Render --- 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Navigation Bar */}
+      {/* Transparent Nav Bar */}
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-black/90 backdrop-blur-md" : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="text-2xl font-bold text-red-600">
-              TV DAO
-            </Link>
+          <div className="flex items-center justify-between h-20">
+            <Logo size={96} />
             <div className="relative">
               <motion.button
                 className="text-gray-300 hover:text-white transition-colors p-2"
@@ -741,7 +732,7 @@ export default function Channels() {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-8 w-8"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -754,7 +745,6 @@ export default function Channels() {
                   />
                 </svg>
               </motion.button>
-
               <AnimatePresence>
                 {isMenuOpen && (
                   <motion.div
@@ -801,9 +791,8 @@ export default function Channels() {
           </div>
         </div>
       </motion.nav>
-
-      {/* Main Content */}
-      <div className="pt-20">
+      {/* Padding for nav bar */}
+      <div className="pt-28">
         {/* Featured Channel */}
         {channels.length > 0 && (
           <motion.div

@@ -27,7 +27,7 @@ export default function SignIn() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 z-10" />
         <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center" />
         <div className="relative z-20 h-full flex flex-col items-center justify-center p-8">
           <motion.div

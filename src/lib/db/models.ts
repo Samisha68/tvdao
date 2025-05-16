@@ -19,6 +19,7 @@ export interface IChannel extends Document {
   total_downvotes: number;
   is_voting_active: boolean;
   voting_end_time?: Date;
+  category?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -56,6 +57,7 @@ const channelSchema: Schema<IChannel> = new Schema({
   total_downvotes: { type: Number, default: 0 },
   is_voting_active: { type: Boolean, default: true },
   voting_end_time: { type: Date },
+  category: { type: String, enum: ['New', 'Popular', 'TrendingNow'], default: 'New' },
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 });
