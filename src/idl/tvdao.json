@@ -1,0 +1,598 @@
+{
+  "address": "2HL7u9iKaj5BEJZ523WsLquPeMZKYMzLhZQ7et4HX7jA",
+  "metadata": {
+    "name": "tvdao",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "claim_earnings",
+      "discriminator": [
+        49,
+        99,
+        161,
+        170,
+        22,
+        233,
+        54,
+        140
+      ],
+      "accounts": [
+        {
+          "name": "channel",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  110,
+                  110,
+                  101,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel.channel_id",
+                "account": "Channel"
+              }
+            ]
+          }
+        },
+        {
+          "name": "broadcaster",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "finalize_price",
+      "discriminator": [
+        33,
+        253,
+        12,
+        183,
+        210,
+        252,
+        98,
+        70
+      ],
+      "accounts": [
+        {
+          "name": "channel",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  110,
+                  110,
+                  101,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel.channel_id",
+                "account": "Channel"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_dao_state",
+      "discriminator": [
+        30,
+        217,
+        43,
+        107,
+        233,
+        64,
+        176,
+        249
+      ],
+      "accounts": [
+        {
+          "name": "dao_state",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "pay_for_channel",
+      "discriminator": [
+        124,
+        147,
+        233,
+        98,
+        184,
+        125,
+        124,
+        5
+      ],
+      "accounts": [
+        {
+          "name": "channel",
+          "writable": true
+        },
+        {
+          "name": "payment_record",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  121,
+                  109,
+                  101,
+                  110,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "viewer"
+              },
+              {
+                "kind": "account",
+                "path": "channel.channel_id",
+                "account": "Channel"
+              }
+            ]
+          }
+        },
+        {
+          "name": "viewer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "dao_treasury",
+          "docs": [
+            "or use the constant directly. It must be able to receive lamports."
+          ],
+          "writable": true
+        },
+        {
+          "name": "dao_state"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "submit_channel",
+      "discriminator": [
+        237,
+        137,
+        64,
+        247,
+        185,
+        92,
+        5,
+        11
+      ],
+      "accounts": [
+        {
+          "name": "dao_state",
+          "writable": true
+        },
+        {
+          "name": "channel",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  110,
+                  110,
+                  101,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "dao_state.next_channel_id",
+                "account": "DaoState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "broadcaster",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "embed_url",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "vote_price",
+      "discriminator": [
+        77,
+        127,
+        187,
+        219,
+        123,
+        21,
+        39,
+        244
+      ],
+      "accounts": [
+        {
+          "name": "channel",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  110,
+                  110,
+                  101,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel.channel_id",
+                "account": "Channel"
+              }
+            ]
+          }
+        },
+        {
+          "name": "voter_record",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  111,
+                  116,
+                  101,
+                  114,
+                  95,
+                  114,
+                  101,
+                  99,
+                  111,
+                  114,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "viewer"
+              },
+              {
+                "kind": "account",
+                "path": "channel.channel_id",
+                "account": "Channel"
+              }
+            ]
+          }
+        },
+        {
+          "name": "viewer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "proposed_price_tier",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Channel",
+      "discriminator": [
+        49,
+        159,
+        99,
+        106,
+        220,
+        87,
+        219,
+        88
+      ]
+    },
+    {
+      "name": "DaoState",
+      "discriminator": [
+        24,
+        50,
+        14,
+        105,
+        233,
+        60,
+        201,
+        244
+      ]
+    },
+    {
+      "name": "PaymentRecord",
+      "discriminator": [
+        202,
+        168,
+        56,
+        249,
+        127,
+        226,
+        86,
+        226
+      ]
+    },
+    {
+      "name": "VoterRecord",
+      "discriminator": [
+        178,
+        96,
+        138,
+        116,
+        143,
+        202,
+        115,
+        33
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NameTooLong",
+      "msg": "Channel name is too long."
+    },
+    {
+      "code": 6001,
+      "name": "UrlTooLong",
+      "msg": "Embed URL is too long."
+    },
+    {
+      "code": 6002,
+      "name": "VotingClosed",
+      "msg": "Voting for this channel is closed as price is finalized."
+    },
+    {
+      "code": 6003,
+      "name": "VotingPeriodExpired",
+      "msg": "The voting period for this channel has expired."
+    },
+    {
+      "code": 6004,
+      "name": "VotingStillOpen",
+      "msg": "The voting period is still open. Price cannot be finalized yet."
+    },
+    {
+      "code": 6005,
+      "name": "InvalidPriceTier",
+      "msg": "Invalid price tier submitted. Must be 1, 2, or 3."
+    },
+    {
+      "code": 6006,
+      "name": "AlreadyFinalized",
+      "msg": "This channel's price has already been finalized."
+    },
+    {
+      "code": 6007,
+      "name": "PriceNotFinalized",
+      "msg": "Channel price has not been finalized yet."
+    },
+    {
+      "code": 6008,
+      "name": "PriceNotSet",
+      "msg": "Channel price is zero or not set, cannot pay."
+    },
+    {
+      "code": 6009,
+      "name": "AlreadyVoted",
+      "msg": "User has already voted for this channel."
+    },
+    {
+      "code": 6010,
+      "name": "UnauthorizedClaimer",
+      "msg": "The signer is not authorized to claim these earnings."
+    },
+    {
+      "code": 6011,
+      "name": "NoEarningsToClaim",
+      "msg": "There are no earnings to claim for this channel currently."
+    }
+  ],
+  "types": [
+    {
+      "name": "Channel",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "channel_id",
+            "type": "u64"
+          },
+          {
+            "name": "broadcaster",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "embed_url",
+            "type": "string"
+          },
+          {
+            "name": "submission_time",
+            "type": "i64"
+          },
+          {
+            "name": "final_price",
+            "type": "u64"
+          },
+          {
+            "name": "is_finalized",
+            "type": "bool"
+          },
+          {
+            "name": "total_revenue_collected",
+            "type": "u64"
+          },
+          {
+            "name": "votes_for_1_usdc",
+            "type": "u32"
+          },
+          {
+            "name": "votes_for_2_usdc",
+            "type": "u32"
+          },
+          {
+            "name": "votes_for_3_usdc",
+            "type": "u32"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DaoState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "next_channel_id",
+            "type": "u64"
+          },
+          {
+            "name": "treasury",
+            "type": "pubkey"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PaymentRecord",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "viewer",
+            "type": "pubkey"
+          },
+          {
+            "name": "channel_id",
+            "type": "u64"
+          },
+          {
+            "name": "amount_paid",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VoterRecord",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "voter",
+            "type": "pubkey"
+          },
+          {
+            "name": "channel_id",
+            "type": "u64"
+          },
+          {
+            "name": "has_voted",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
