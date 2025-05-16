@@ -1,6 +1,6 @@
 # TV DAO: Decentralized Television Platform
 
-![TV DAO Banner](public/tvdao-banner.png)
+![TV DAO Banner](https://raw.githubusercontent.com/Samisha68/tvdao/main/public/tvdao-banner.png)
 
 TV DAO is a revolutionary decentralized television platform built on Solana blockchain, redefining content distribution and monetization through smart contracts and community governance.
 
