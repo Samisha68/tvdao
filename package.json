@@ -19,6 +19,7 @@
     "@solana/web3.js": "^1.98.2",
     "dotenv": "^16.4.5",
     "framer-motion": "^12.10.5",
+    "lightningcss": "1.21.0",
     "mongoose": "^8.10.1",
     "next": "15.3.2",
     "react": "^19.0.0",
