@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import CreatorForm from "@/components/CreatorForm";
 
 // Define animation variants for typewriter effect
 const h1TypewriterVariants = {
@@ -25,6 +26,8 @@ const letterTypewriterVariants = {
 
 export default function Home() {
   const siteTitle = "TV DAO";
+  const [isCreatorModalOpen, setIsCreatorModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Logo Top Left */}
@@ -89,19 +92,18 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <Link href="/signin">
-              <motion.button 
-                className="bg-red-600 hover:bg-red-700 text-white text-xl px-8 py-4 rounded-lg transition-all duration-300"
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 0 8px #ff0000, 0 0 12px #ff0000, 0 0 15px #ff0000",
-                  transition: { duration: 0.3 }
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Watch Now
-              </motion.button>
-            </Link>
+            <motion.button 
+              onClick={() => setIsCreatorModalOpen(true)}
+              className="bg-red-600 hover:bg-red-700 text-white text-xl px-8 py-4 rounded-lg transition-all duration-300"
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 0 8px #ff0000, 0 0 12px #ff0000, 0 0 15px #ff0000",
+                transition: { duration: 0.3 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Join Waitlist
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
@@ -201,6 +203,71 @@ export default function Home() {
               <p className="text-gray-200 text-base transition-colors duration-200 group-hover:text-white">Kick back, watch, and maybe brag to your friends. (We won't tell if you binge.)</p>
             </motion.div>
           </div>
+
+          {/* Creator Waitlist Section */}
+          <motion.div
+            className="mt-20 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
+            <h3 className="text-3xl font-bold mb-4 text-[#E50914]">Are You a Creator?</h3>
+            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+              Join our exclusive waitlist and be among the first to create content on TV DAO. 
+              Share your vision with our community and earn while doing what you love.
+            </p>
+            <motion.button
+              onClick={() => setIsCreatorModalOpen(true)}
+              className="bg-gradient-to-r from-red-600 to-red-800 text-white px-8 py-4 rounded-lg text-xl font-semibold hover:from-red-700 hover:to-red-900 transition-all duration-300"
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 0 8px #ff0000, 0 0 12px #ff0000, 0 0 15px #ff0000",
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Join Creator Waitlist
+            </motion.button>
+          </motion.div>
+
+          {/* Creator Form Modal */}
+          <AnimatePresence>
+            {isCreatorModalOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                onClick={() => setIsCreatorModalOpen(false)}
+              >
+                <motion.div
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                  className="bg-[#1E1E1E] rounded-xl shadow-2xl overflow-hidden border border-[rgba(255,255,255,0.05)] max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                  onClick={e => e.stopPropagation()}
+                >
+                  <div className="p-6">
+                    <div className="flex justify-between items-center mb-6">
+                      <h3 className="text-2xl font-bold text-[#E50914]">Join Creator Waitlist</h3>
+                      <button
+                        onClick={() => setIsCreatorModalOpen(false)}
+                        className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full"
+                      >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                    <div className="bg-[#141414] rounded-lg p-6 border border-[rgba(255,255,255,0.05)]">
+                      <CreatorForm />
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
