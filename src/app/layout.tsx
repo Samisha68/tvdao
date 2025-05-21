@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { WalletProvider } from "./WalletProvider";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
@@ -58,8 +48,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@geist-ui/font@latest/dist/fonts.css"
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} antialiased`}
+        className={`${bebasNeue.variable} antialiased`}
       >
         <WalletProvider>
           {children}

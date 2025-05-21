@@ -1,14 +1,18 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-geist-sans: 'Geist Sans', sans-serif;
+  --font-geist-mono: 'Geist Mono', monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-bebas-neue);
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -22,14 +26,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-bebas-neue), sans-serif;
+  font-family: var(--font-geist-sans);
   letter-spacing: 0.04em;
   line-height: 1.6;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @keyframes gradient-x {
   0% {
@@ -46,4 +46,35 @@ body {
 
 .font-bebas {
   font-family: var(--font-bebas-neue), sans-serif;
+}
+
+.font-geist {
+  font-family: var(--font-geist-sans);
+}
+
+.font-geist-mono {
+  font-family: var(--font-geist-mono);
+}
+
+/* Restore original font styling */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-bebas-neue), sans-serif;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.font-display {
+  font-family: var(--font-bebas-neue), sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-body {
+  font-family: var(--font-geist-sans);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+.font-mono {
+  font-family: var(--font-geist-mono);
+  letter-spacing: -0.02em;
 }

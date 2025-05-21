@@ -10,6 +10,10 @@ module.exports = {
       colors: {
         primary: '#0070f3',
       },
+      fontFamily: {
+        'geist-sans': ['Geist Sans', 'sans-serif'],
+        'geist-mono': ['Geist Mono', 'monospace'],
+      },
     },
   },
   plugins: [],
