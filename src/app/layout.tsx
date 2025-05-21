@@ -14,8 +14,11 @@ export const metadata: Metadata = {
   title: "TV DAO - Decentralized TV Channels",
   description: "Decentralized TV channels powered by Solana. Vote, earn, and watch content you love.",
   icons: {
-    icon: "/tvdao-logo.png",
-    apple: "/tvdao-logo.png",
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/tvdao-logo.png', type: 'image/png' }
+    ],
+    apple: '/tvdao-logo.png',
   },
   openGraph: {
     title: "TV DAO: Decentralized Television Platform",
@@ -51,8 +54,11 @@ export default function RootLayout({
       <head>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@geist-ui/font@latest/dist/fonts.css"
+          href="https://fonts.vercel.com/css2?family=Geist+Mono:wght@300..700&family=Geist+Sans:wght@300..700&display=swap"
         />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/tvdao-logo.png" type="image/png" />
+        <link rel="shortcut icon" href="/tvdao-logo.png" />
       </head>
       <body
         className={`${bebasNeue.variable} antialiased`}
